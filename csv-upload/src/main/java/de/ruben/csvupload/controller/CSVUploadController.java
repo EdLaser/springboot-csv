@@ -23,7 +23,7 @@ import de.ruben.csvupload.model.Student;
 @RequiredArgsConstructor
 public class CSVUploadController {
 
-    CSVService csvService;
+    private final CSVService csvService;
 
     @GetMapping("/")
     @ResponseBody

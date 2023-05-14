@@ -10,6 +10,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @EnableJpaRepositories("de.ruben.csvupload.repository")
 public class CsvUploadApplication {
 
+
 	public static void main(String[] args) {
 		SpringApplication.run(CsvUploadApplication.class, args);
 	}

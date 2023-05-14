@@ -3,6 +3,7 @@ package de.ruben.csvupload.service;
 import java.io.IOException;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -15,7 +16,6 @@ import de.ruben.csvupload.model.Student;
 @Service
 @RequiredArgsConstructor
 public class CSVService {
-    
     private final StudentRepository studentRepository;
 
     public void save(MultipartFile uploadFile) {

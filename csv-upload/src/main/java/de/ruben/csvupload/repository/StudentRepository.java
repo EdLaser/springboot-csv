@@ -1,13 +1,13 @@
 package de.ruben.csvupload.repository;
 
-import java.util.List;
-
-import org.springframework.data.repository.CrudRepository;
+import jakarta.transaction.Transactional;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import de.ruben.csvupload.model.Student;
 
 @Repository
-public interface StudentRepository extends CrudRepository<Student, Long> {
+@Transactional
+public interface StudentRepository extends JpaRepository<Student, Long> {
 
 }
