@@ -1,6 +1,5 @@
 package de.ruben.csvupload.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -16,20 +15,26 @@ import java.util.List;
 import de.ruben.csvupload.helpers.CSVHelper;
 import de.ruben.csvupload.message.ResponseMessage;
 import de.ruben.csvupload.service.CSVService;
+import lombok.RequiredArgsConstructor;
 import de.ruben.csvupload.model.Student;
 
 @Controller
 @CrossOrigin("http://localhost:8081")
+@RequiredArgsConstructor
 public class CSVUploadController {
 
-    @Autowired
     CSVService csvService;
 
     @GetMapping("/")
     @ResponseBody
     public String test() {
-        return "<html>\n" + "<header><title>Welcome</title></header>\n" +
-                "<body>\n" + "Hello world\n" + "</body>\n" + "</html>";
+        return """
+                <html>
+                <header><title>Welcome</title></header>
+                <body>
+                Hello world
+                </body>
+                </html>""";
     }
 
     @GetMapping("/upload")

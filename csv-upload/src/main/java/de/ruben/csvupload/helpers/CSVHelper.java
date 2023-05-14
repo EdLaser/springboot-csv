@@ -25,8 +25,8 @@ public class CSVHelper {
 
     public static List<Student> csvToStudents(InputStream inputStream) {
         try {
-            BufferedReader fielReader = new BufferedReader(new InputStreamReader(inputStream, StandardCharsets.UTF_8));
-            try (CSVParser csvParser = new CSVParser(fielReader, CSVFormat.DEFAULT.withFirstRecordAsHeader().withIgnoreHeaderCase().withTrim())) {
+            BufferedReader fileReader = new BufferedReader(new InputStreamReader(inputStream, StandardCharsets.UTF_8));
+            try (CSVParser csvParser = new CSVParser(fileReader, CSVFormat.DEFAULT.withFirstRecordAsHeader().withIgnoreHeaderCase().withTrim())) {
                 List<Student> students = new ArrayList<Student>();
 
                 Iterable<CSVRecord> csvRecords = csvParser.getRecords();
