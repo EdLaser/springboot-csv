@@ -15,7 +15,6 @@ import de.ruben.csvupload.model.Student;
 @Service
 public class CSVService {
     
-    @Autowired
     StudentRepository studentRepository;
 
     public void save(MultipartFile uploadFile) {

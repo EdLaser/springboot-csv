@@ -11,7 +11,7 @@
 	</parent>
 	<groupId>de.ruben</groupId>
 	<artifactId>csv-upload</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0.0</version>
 	<name>csv-upload</name>
 	<description>CSV Upload for Spring </description>
 	<properties>

@@ -5,7 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication()
-@ComponentScan({"de.ruben.csvupload.repository"})
+// @ComponentScan({"de.ruben.csvupload.repository"})
 public class CsvUploadApplication {
 
 	public static void main(String[] args) {
