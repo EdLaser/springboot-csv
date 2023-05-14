@@ -7,7 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestPart;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -32,17 +32,23 @@ public class CSVUploadController {
                 "<body>\n" + "Hello world\n" + "</body>\n" + "</html>";
     }
 
-    @PostMapping("/upload")
-    public ResponseEntity<ResponseMessage> uploadFile(@RequestPart MultipartFile uploadFile) {
+    @GetMapping("/upload")
+    public String showuploadSite() {
+        return "uploadSite.html";
+    }
 
-        if (CSVHelper.hasCSVFormat(uploadFile)) {
+
+    @PostMapping("/upload")
+    public ResponseEntity<ResponseMessage> uploadFile(@RequestParam("file") MultipartFile file) {
+
+        if (CSVHelper.hasCSVFormat(file)) {
             try {
-                csvService.save(uploadFile);
+                csvService.save(file);
                 return ResponseEntity.status(HttpStatus.OK)
-                        .body(new ResponseMessage("File upload succes: " + uploadFile.getOriginalFilename()));
+                        .body(new ResponseMessage("File upload succes: " + file.getOriginalFilename()));
             } catch (Exception e) {
                 return ResponseEntity.status(HttpStatus.EXPECTATION_FAILED)
-                        .body(new ResponseMessage("Could not upload: " + uploadFile.getOriginalFilename()));
+                        .body(new ResponseMessage("Could not upload: " + file.getOriginalFilename()));
             }
         }
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new ResponseMessage("Upload csv file"));
