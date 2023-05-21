@@ -19,6 +19,15 @@ jobs:
 
     runs-on: ubuntu-latest
 
+    services:
+      postgres_main:
+        image: postgres:13
+        ports:
+          - 5432:5432
+        env:
+          POSTGRES_USER: compose-postgres
+          POSTGRES_PASSWORD: compose-postgres
+
     steps:
     - uses: actions/checkout@v3
     - name: Set up JDK 20
