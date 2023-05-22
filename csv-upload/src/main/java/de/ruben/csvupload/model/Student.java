@@ -37,9 +37,9 @@ public class Student {
 
     protected Student() {}
 
-    public Student(String title, String firsName, String lastName, String email, String faculty) {
+    public Student(String title, String firstName, String lastName, String email, String faculty) {
         this.title = title;
-        this.firstName = firsName;
+        this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.faculty = faculty;
