@@ -26,26 +26,30 @@ public class CSVHelper {
     public static List<Student> csvToStudents(InputStream inputStream) {
         try {
             BufferedReader fileReader = new BufferedReader(new InputStreamReader(inputStream, StandardCharsets.UTF_8));
-            try (CSVParser csvParser = new CSVParser(fileReader, CSVFormat.DEFAULT.withFirstRecordAsHeader().withIgnoreHeaderCase().withTrim())) {
-                List<Student> students = new ArrayList<Student>();
+            try (CSVParser csvParser = new CSVParser(fileReader,
+                    CSVFormat.DEFAULT.withFirstRecordAsHeader().withIgnoreHeaderCase().withTrim())) {
+                List<Student> students = new ArrayList<>();
 
                 Iterable<CSVRecord> csvRecords = csvParser.getRecords();
 
-                for (CSVRecord csvRecord: csvRecords) {
+                for (CSVRecord csvRecord : csvRecords) {
                     Student student = new Student(
-                        csvRecord.get("title"), 
-                        csvRecord.get("first_name"), 
-                        csvRecord.get("last_name"), 
-                        csvRecord.get("email"), 
-                        csvRecord.get("faculty")
-                        );
+                            csvRecord.get("title"),
+                            csvRecord.get("first_name"),
+                            csvRecord.get("last_name"),
+                            csvRecord.get("email"),
+                            csvRecord.get("faculty"));
                     students.add(student);
                 }
 
                 return students;
             }
         } catch (IOException e) {
-            throw new RuntimeException("failed to parse CSV: " + e.getMessage());
+            throw new IllegalArgumentException("failed to parse CSV: " + e.getMessage());
         }
+    }
+
+    private CSVHelper() {
+        throw new UnsupportedOperationException("This is utility and can not be instantiated");
     }
 }

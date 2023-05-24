@@ -72,4 +72,17 @@ public class StudentRepositoryTest {
         assertEquals(1, students.size());
         assertEquals(student, students.get(0));
     }
+
+    @Test
+    public void testFindStudentByLastName() {
+        // Arrange
+        String lastName = "Doe";
+
+        // Act
+        Student student = studentRepository.findByLastName(lastName);
+
+        // Assert
+        assertNotNull(student);
+        assertEquals(lastName, student.getLastName());
+    }
 }
