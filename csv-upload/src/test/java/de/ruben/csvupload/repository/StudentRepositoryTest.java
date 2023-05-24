@@ -1,4 +1,4 @@
-package de.ruben.csvupload;
+package de.ruben.csvupload.repository;
 
 import de.ruben.csvupload.model.Student;
 import de.ruben.csvupload.repository.StudentRepository;

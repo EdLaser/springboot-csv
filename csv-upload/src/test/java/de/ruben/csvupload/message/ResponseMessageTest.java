@@ -1,4 +1,4 @@
-package de.ruben.csvupload;
+package de.ruben.csvupload.message;
 
 import de.ruben.csvupload.message.ResponseMessage;
 
