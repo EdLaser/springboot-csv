@@ -27,7 +27,11 @@ public class CSVService {
         }
     }
 
+    public Student getByLastName(String lastName) {
+        return studentRepository.findByLastName(lastName);
+    }
+
     public List<Student> getAllStudents() {
-        return (List<Student>) studentRepository.findAll();
+        return studentRepository.findAll();
     }
 }

@@ -10,4 +10,5 @@ import de.ruben.csvupload.model.Student;
 @Transactional
 public interface StudentRepository extends JpaRepository<Student, Long> {
 
+    Student findByLastName(String lastName);
 }

@@ -5,6 +5,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -42,7 +43,6 @@ public class CSVUploadController {
         return "uploadSite.html";
     }
 
-
     @PostMapping("/upload")
     public ResponseEntity<ResponseMessage> uploadFile(@RequestParam("file") MultipartFile file) {
 
@@ -68,5 +68,12 @@ public class CSVUploadController {
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
+    }
+
+    @GetMapping("/students/{lastName}")
+    public ResponseEntity<Student> getByLastName(@PathVariable("lastName") String lastName) {
+        var student = csvService.getByLastName(lastName);
+        return student == null ? new ResponseEntity<>(HttpStatus.NO_CONTENT)
+                : new ResponseEntity<>(student, HttpStatus.OK);
     }
 }
