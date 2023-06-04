@@ -1,13 +1,12 @@
 package de.ruben.csvupload.repository;
 
 import de.ruben.csvupload.model.Student;
-import de.ruben.csvupload.repository.StudentRepository;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
-import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import org.springframework.test.context.TestPropertySource;
 
 import java.util.List;
@@ -23,10 +22,12 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 public class StudentRepositoryTest {
 
     @Autowired
-    private StudentRepository studentRepository;
+    StudentRepository studentRepository;
 
-    @Autowired
-    private TestEntityManager entityManager;
+    @BeforeEach
+    void cleanUp() {
+        studentRepository.deleteAll();
+    }
 
     @Test
     public void testSaveStudent() {
@@ -76,13 +77,20 @@ public class StudentRepositoryTest {
     @Test
     public void testFindStudentByLastName() {
         // Arrange
+        String title = "Mr.";
+        String firstName = "John";
         String lastName = "Doe";
+        String email = "john.doe@example.com";
+        String faculty = "Computer Science";
+
+        Student student = new Student(title, firstName, lastName, email, faculty);
+        studentRepository.save(student);
 
         // Act
-        Student student = studentRepository.findByLastName(lastName);
+        Student searchedStudent = studentRepository.findByLastName(lastName);
 
         // Assert
         assertNotNull(student);
-        assertEquals(lastName, student.getLastName());
+        assertEquals(lastName, searchedStudent.getLastName());
     }
 }
