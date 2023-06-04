@@ -1,7 +1,5 @@
 package de.ruben.csvupload.message;
 
-import de.ruben.csvupload.message.ResponseMessage;
-
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
