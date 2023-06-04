@@ -33,4 +33,8 @@ public class CSVService {
     public List<Student> getAllStudents() {
         return studentRepository.findAll();
     }
+
+    public void deleteAll() {
+        studentRepository.deleteAll();
+    }
 }
