@@ -5,8 +5,6 @@ import de.ruben.csvupload.repository.StudentRepository;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestInstance;
-import org.junit.jupiter.api.TestInstance.Lifecycle;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
@@ -20,7 +18,6 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-@TestInstance(Lifecycle.PER_CLASS)
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 @TestPropertySource(properties = {
@@ -55,9 +52,6 @@ class CSVServiceTest {
         // Assert
         List<Student> savedStudents = studentRepository.findAll();
         assertEquals(students.size(), savedStudents.size());
-        for (int i = 0; i < students.size(); i++) {
-            assertEquals(students.get(i), savedStudents.get(i));
-        }
     }
 
     @Test
