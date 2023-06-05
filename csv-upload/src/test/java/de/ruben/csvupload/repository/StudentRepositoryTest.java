@@ -12,6 +12,7 @@ import org.springframework.test.context.TestPropertySource;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertInstanceOf;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 @DataJpaTest
@@ -45,7 +46,7 @@ public class StudentRepositoryTest {
 
         // Assert
         assertNotNull(savedStudent);
-        assertNotNull(savedStudent.getId());
+        assertInstanceOf(long.class, savedStudent.getId());
         assertEquals(title, savedStudent.getTitle());
         assertEquals(firstName, savedStudent.getFirstName());
         assertEquals(lastName, savedStudent.getLastName());
