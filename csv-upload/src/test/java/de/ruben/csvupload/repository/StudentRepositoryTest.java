@@ -46,7 +46,7 @@ public class StudentRepositoryTest {
 
         // Assert
         assertNotNull(savedStudent);
-        assertInstanceOf(long.class, savedStudent.getId());
+        assertInstanceOf(java.lang.Long.class, savedStudent.getId());
         assertEquals(title, savedStudent.getTitle());
         assertEquals(firstName, savedStudent.getFirstName());
         assertEquals(lastName, savedStudent.getLastName());
